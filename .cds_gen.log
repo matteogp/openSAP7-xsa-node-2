@@ -1,0 +1,4 @@
+db/src/gen/.hdinamespace
+db/src/gen/CATALOGSERVICE_USER.hdbcds
+db/src/gen/USER_DETAILS.hdbcds
+srv/gen/csn.json
