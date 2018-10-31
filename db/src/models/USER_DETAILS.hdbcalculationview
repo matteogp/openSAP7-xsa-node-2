@@ -4,28 +4,28 @@
 <localVariables/>
 <variableMappings/>
 <dataSources>
-  <DataSource id="UserData.User">
-    <resourceUri>UserData.User</resourceUri>
+  <DataSource id="USER_DETAILS">
+    <resourceUri>USER_DETAILS</resourceUri>
   </DataSource>
 </dataSources>
 <calculationViews/>
-<logicalModel id="UserData.User">
+<logicalModel id="USER_DETAILS">
   <attributes>
     <attribute id="USERID" order="1" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="User ID"/>
-      <keyMapping columnObjectName="UserData.User" columnName="UserId"/>
+      <keyMapping columnObjectName="USER_DETAILS" columnName="USERID"/>
     </attribute>
     <attribute id="FIRSTNAME" order="2" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="First Name"/>
-      <keyMapping columnObjectName="UserData.User" columnName="FirstName"/>
+      <keyMapping columnObjectName="USER_DETAILS" columnName="FIRSTNAME"/>
     </attribute>
     <attribute id="LASTNAME" order="3" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Last Name"/>
-      <keyMapping columnObjectName="UserData.User" columnName="LastName"/>
+      <keyMapping columnObjectName="USER_DETAILS" columnName="LASTNAME"/>
     </attribute>
     <attribute id="EMAIL" order="4" displayAttribute="false" attributeHierarchyActive="false">
       <descriptions defaultDescription="Email"/>
-      <keyMapping columnObjectName="UserData.User" columnName="Email"/>
+      <keyMapping columnObjectName="USER_DETAILS" columnName="EMAIL"/>
     </attribute>
   </attributes>
   <calculatedAttributes/>
@@ -36,7 +36,9 @@
 <layout>
   <shapes>
     <shape expanded="true" modelObjectName="Output" modelObjectNameSpace="MeasureGroup">
-      <upperLeftCorner x="40" y="85"/>
+      <upperLeftCorner x="92" y="112"/>
+    
+      <rectangleSize width="160"/>
     </shape>
   </shapes>
 </layout>

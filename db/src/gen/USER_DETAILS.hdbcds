@@ -1,0 +1,6 @@
+entity USER_DETAILS {
+  EMAIL : String(255);
+  FIRSTNAME : String(40);
+  LASTNAME : String(40);
+  key USERID : Integer;
+};

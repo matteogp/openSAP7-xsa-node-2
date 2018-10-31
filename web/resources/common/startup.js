@@ -36,19 +36,6 @@ function localShellStartup(name) {
 		var username = getSessionInfo();
 		// create a shell
 		new sap.ui.unified.Shell({
-			id: "myShell",
-			icon: "/images/sap_18.png",
-			headEndItems: new sap.ui.unified.ShellHeadItem({
-				icon: "sap-icon://log",
-				tooltip: "Logoff",
-				press: function () {
-					window.location.href = "/my/logout";
-				}
-			}),
-			user: new sap.ui.unified.ShellHeadUserItem({
-				image: "sap-icon://person-placeholder",
-				username: username
-			}),
 			content: ComponentContainer
 		}).placeAt("content");
 

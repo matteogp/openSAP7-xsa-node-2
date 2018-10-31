@@ -8,11 +8,6 @@ const cds = require("@sap/cds");
 
 /**
  * Register handlers to events.
- * @param {Object} entities
- * @param {Object} entities.POs
- * @param {Object} entities.POItems
- * @param {Object} entities.POItemsView
- * @param {Object} entities.Buyer
  * @param {Object} entities.User
  */
 module.exports = function (entities) {
@@ -42,25 +37,18 @@ module.exports = function (entities) {
 		var client = await dbClass.createConnection();
 		let db = new dbClass(client);
 		const insStatement = await db.preparePromisified(
-			`INSERT INTO "UserData.User" 
-			        ("FirstName", "LastName", "Email")
-			        VALUES (?,?,?)`
+			`INSERT INTO USER_DETAILS 
+			        (FIRSTNAME, LASTNAME, EMAIL, USERID)
+			        VALUES (?,?,?, "userSeqId".NEXTVAL)`
 		);
-		let updResults = await db.statementExecPromisified(insStatement, [data.FIRSTNAME, data.LASTNAME, data.EMAIL]);
-		
-		const testStatement = await db.preparePromisified(
-			`select * from "UserData.User" `
-		);
-		
-		updResults = await db.statementExecPromisified(testStatement, []); 
-		console.log('updResults');
-		console.log(updResults);
+		const updResults = await db.statementExecPromisified(insStatement, [data.FIRSTNAME, data.LASTNAME, data.EMAIL]);
+
+		console.log('After User Create');
 
 		const statement = await db.preparePromisified(
-			`SELECT CURRENT_IDENTITY_VALUE() AS ID
-						 FROM "UserData.User"`);
+			`SELECT MAX(USERID) FROM USER_DETAILS`);
 		const userResults = await db.statementExecPromisified(statement, []);
-		data.USERID = userResults[0].ID;
+		data.USERID = userResults[0]["MAX(USERID)"];
 		console.log(JSON.stringify(data));
 		return data;
 
@@ -79,18 +67,18 @@ module.exports = function (entities) {
 		var client = await dbClass.createConnection();
 		let db = new dbClass(client);
 		const statement = await db.preparePromisified(
-			`SELECT * FROM "UserData.User" 
+			`SELECT * FROM USER_DETAILS
 						  WHERE USERID = ?`);
 		const userResults = await db.statementExecPromisified(statement, [data.USERID]);
 		Object.keys(data).forEach(function (key) {
 			userResults[0][key] = data[key];
 		});
 		const updStatement = await db.preparePromisified(
-			`UPDATE "UserData.User" SET
-			              "FirstName" = ?,
-			              "LastName" = ?,
-			              "Email" = ?
-						  WHERE "UserId" = ?`
+			`UPDATE USER_DETAILS SET
+			              "FIRSTNAME" = ?,
+			              "LASTNAME" = ?,
+			              "EMAIL" = ?
+						  WHERE "USERID" = ?`
 		);
 		const updResults = await db.statementExecPromisified(updStatement, [userResults[0].FIRSTNAME, userResults[0].LASTNAME, userResults[0].EMAIL,
 			userResults[0].USERID

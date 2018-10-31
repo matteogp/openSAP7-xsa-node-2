@@ -1,39 +1,6 @@
-ID: users
-_schema-version: '2.1'
-version: 0.0.1
-modules:
-  - name: db
-    type: hdb
-    path: db
-    parameters:
-      memory: 256M
-      disk-quota: 256M
-    requires:
-      - name: users-hdi-container
-  - name: srv
-    type: nodejs
-    path: srv
-    parameters:
-      memory: 512M
-      disk-quota: 256M
-    provides:
-      - name: srv_api
-        properties:
-          url: '${default-url}'
-    requires:
-      - name: users-hdi-container
-  - name: web
-    type: html5
-    path: web
-    properties: {}
-    requires:
-      - name: users-uaa
-resources:
-  - name: users-hdi-container
-    properties:
-      hdi-container-name: '${service-name}'
-    type: com.sap.xs.hdi-container
-  - name: users-uaa
-    type: com.sap.xs.uaa-space
-    parameters:
-      path: ./xs-security.json
+Entity USER_DETAILS {
+   EMAIL: String(255)  @title: 'Email Address';  
+   FIRSTNAME: String(40) @title: 'Given Name';
+   LASTNAME: String(40) @title: 'Family Name';
+     key USERID: Integer  @title: 'User Id';   
+}

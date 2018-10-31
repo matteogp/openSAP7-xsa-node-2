@@ -34,12 +34,6 @@ modules:
     properties: {}
     requires:
       - name: users-uaa
-      - name: xsjs_api
-        group: destinations
-        properties:
-          name: xsjs_api
-          url: '~{url}'
-          forwardAuthToken: true
       - name: openSAP-ui5
       - name: srv_api
         group: destinations
@@ -47,17 +41,7 @@ modules:
           name: srv_api
           url: '~{url}'
           forwardAuthToken: true
-  - name: xsjs
-    type: nodejs
-    path: xsjs
-    provides:
-      - name: xsjs_api
-        properties:
-          url: '${default-url}'
-    requires:
-      - name: users-hdi-container
-      - name: users-uaa
-      - name: db
+  
 resources:
   - name: users-hdi-container
     properties:

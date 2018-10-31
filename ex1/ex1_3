@@ -1,4 +1,3 @@
-using USER_DETAILS as UserDetails from '../db/data-model';
 service CatalogService {
 
 	entity User @(
