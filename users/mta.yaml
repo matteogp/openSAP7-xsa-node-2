@@ -31,6 +31,13 @@ modules:
     path: web
     requires:
       - name: users-uaa
+      - name: srv_api
+        group: destinations
+        properties:
+          name: srv_api
+          url: '~{url}'
+          forwardAuthToken: true
+      - name: users-ui5
 resources:
   - name: users-hdi-container
     properties:
@@ -38,3 +45,8 @@ resources:
     type: com.sap.xs.hdi-container
   - name: users-uaa
     type: com.sap.xs.uaa-space
+  - name: users-ui5
+    type: org.cloudfoundry.managed-service
+    parameters:
+      service: sapui5_sb
+      service-plan: sapui5-1.52

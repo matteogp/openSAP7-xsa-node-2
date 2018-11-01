@@ -83,6 +83,8 @@ module.exports = function (entities) {
 		const updResults = await db.statementExecPromisified(updStatement, [userResults[0].FIRSTNAME, userResults[0].LASTNAME, userResults[0].EMAIL,
 			userResults[0].USERID
 		]);
+		console.log(JSON.stringify(userResults));
+		console.log("After User Update");
 		return userResults[0];
 
 	});

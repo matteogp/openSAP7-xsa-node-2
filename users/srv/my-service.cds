@@ -2,7 +2,7 @@ using USER_DETAILS as UserDetails from '../db/data-model';
 service CatalogService {
 
 	entity User @(
-			title: '{i18n>userService}',
+			title: 'UserService',
 			Capabilities: {
 				InsertRestrictions: {Insertable: true},
 				UpdateRestrictions: {Updatable: true},
