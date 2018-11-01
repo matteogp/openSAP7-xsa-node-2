@@ -11,12 +11,6 @@
 		    			  "UPDATE", 
 		    			  "CREATE TEMPORARY TABLE"
 		   ]
-		}],
-		"schema_analytic_privileges": [
-            {
-                "privileges":[ "USER_PRIV" ]
-            }
-        ]
-	
+		}]
       }
 }

@@ -9,6 +9,20 @@
 		"source": "/node(.*)",
 		"destination": "srv_api",
 		"authenticationType": "xsuaa"
+	},{
+		"source": "/(.*)",
+		"localDir": "resources",
+		"authenticationType": "xsuaa",
+		"replace": {
+			"pathSuffixes": [
+				"index.html"
+			],
+			"services": {
+				"sapui5_sb": {
+					"tag": "ui5"
+				}
+			}
+		}
 	}]
 
 }
